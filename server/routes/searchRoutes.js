@@ -117,9 +117,7 @@ router.get('/search', async (req, res) => {
 
   try {
 
-    // ==================================================
-    // 1. VERIFICA CACHE
-    // ==================================================
+    // VERIFICA CACHE
 
     const cached =
       getCachedSearch({
@@ -137,7 +135,7 @@ router.get('/search', async (req, res) => {
         );
 
       console.log(
-        `⚡ Cache encontrado para ${city} - ${businessType} (${cachedResults.length} empresas)`
+        `Cache encontrado para ${city} - ${businessType} (${cachedResults.length} empresas)`
       );
 
       return res.json({
@@ -162,10 +160,7 @@ router.get('/search', async (req, res) => {
       });
     }
 
-
-    // ==================================================
-    // 2. PESQUISA NO OPENSTREETMAP
-    // ==================================================
+    // PESQUISA NO OPENSTREETMAP
 
     const businesses =
       await searchBusinesses(
@@ -175,10 +170,7 @@ router.get('/search', async (req, res) => {
         country
       );
 
-
-    // ==================================================
-    // 3. ORGANIZA OS DADOS
-    // ==================================================
+    //  ORGANIZA OS DADOS
 
     const formattedBusinesses =
   formatBusinesses(
@@ -186,10 +178,7 @@ router.get('/search', async (req, res) => {
     city
   );
 
-
-    // ==================================================
-    // 4. ANALISA OS WEBSITES
-    // ==================================================
+    //  ANALISA OS WEBSITES
 
     const enrichedBusinesses =
       await Promise.all(
@@ -216,10 +205,7 @@ router.get('/search', async (req, res) => {
         )
       );
 
-
-    // ==================================================
-    // 5. CALCULA A OPORTUNIDADE
-    // ==================================================
+    // CALCULA A OPORTUNIDADE
 
     const results =
       enrichedBusinesses.map(
@@ -229,10 +215,7 @@ router.get('/search', async (req, res) => {
           )
       );
 
-
-    // ==================================================
-    // 6. GUARDA NO SQLITE
-    // ==================================================
+    // GUARDA NO SQLITE
 
     const searchId =
       saveSearchAndBusinesses({
@@ -249,13 +232,10 @@ router.get('/search', async (req, res) => {
 
 
     console.log(
-      `💾 Pesquisa ${searchId} guardada com ${results.length} empresas.`
+      ` Pesquisa ${searchId} guardada com ${results.length} empresas.`
     );
 
-
-    // ==================================================
-    // 7. DEVOLVE AO FRONTEND
-    // ==================================================
+    // DEVOLVE AO FRONTEND
 
     res.json({
 

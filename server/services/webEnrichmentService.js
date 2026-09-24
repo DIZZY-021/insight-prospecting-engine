@@ -470,7 +470,7 @@ async function runSearches(
   ) {
     try {
       console.log(
-        `🌐 Pesquisa digital: ${query}`
+        ` Pesquisa digital: ${query}`
       );
 
       const results =
@@ -483,7 +483,7 @@ async function runSearches(
       );
     } catch (error) {
       console.warn(
-        `⚠️ Falha na pesquisa "${query}":`,
+        ` Falha na pesquisa "${query}":`,
         error.message
       );
     }
@@ -951,7 +951,7 @@ export async function enrichBusiness(
     }
   } catch (error) {
     console.warn(
-      `⚠️ Não foi possível descobrir presença digital de ${result.name}:`,
+      ` Não foi possível descobrir presença digital de ${result.name}:`,
       error.message
     );
 

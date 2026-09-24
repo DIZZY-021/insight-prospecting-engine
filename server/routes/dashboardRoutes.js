@@ -7,9 +7,7 @@ const router = express.Router();
 router.get('/dashboard', (req, res) => {
   try {
 
-    // ==========================================
-    // 60. TOTAL DE EMPRESAS
-    // ==========================================
+    // TOTAL DE EMPRESAS
 
     const totalBusinesses = db
       .prepare(`
@@ -18,10 +16,7 @@ router.get('/dashboard', (req, res) => {
       `)
       .get();
 
-
-    // ==========================================
-    // 61. EMPRESAS SEM WEBSITE
-    // ==========================================
+    // EMPRESAS SEM WEBSITE
 
     const businessesWithoutWebsite = db
       .prepare(`
@@ -32,10 +27,7 @@ router.get('/dashboard', (req, res) => {
       `)
       .get();
 
-
-    // ==========================================
-    // 62. EMPRESAS COM ALTA OPORTUNIDADE
-    // ==========================================
+    // EMPRESAS COM ALTA OPORTUNIDADE
 
     const highOpportunity = db
       .prepare(`
@@ -48,10 +40,7 @@ router.get('/dashboard', (req, res) => {
       `)
       .get();
 
-
-    // ==========================================
-    // 63. MÉDIA DO OPPORTUNITY SCORE
-    // ==========================================
+    //  MÉDIA DO OPPORTUNITY SCORE
 
     const averageScore = db
       .prepare(`
@@ -61,10 +50,7 @@ router.get('/dashboard', (req, res) => {
       `)
       .get();
 
-
-    // ==========================================
-    // 64. DISTRIBUIÇÃO DAS OPORTUNIDADES
-    // ==========================================
+    //  DISTRIBUIÇÃO DAS OPORTUNIDADES
 
     const opportunityDistribution = db
       .prepare(`
@@ -77,11 +63,8 @@ router.get('/dashboard', (req, res) => {
       `)
       .all();
 
-
-    // ==========================================
-    // 65. ESTATÍSTICAS POR CATEGORIA
-    // ==========================================
-
+    // ESTATÍSTICAS POR CATEGORIA
+  
     const statisticsByCategory = db
       .prepare(`
         SELECT
@@ -95,10 +78,7 @@ router.get('/dashboard', (req, res) => {
       `)
       .all();
 
-
-    // ==========================================
-    // 66. ESTATÍSTICAS POR CIDADE
-    // ==========================================
+    // ESTATÍSTICAS POR CIDADE
 
     const statisticsByCity = db
       .prepare(`
@@ -112,10 +92,7 @@ router.get('/dashboard', (req, res) => {
       `)
       .all();
 
-
-    // ==========================================
     // RESPOSTA
-    // ==========================================
 
     res.json({
 

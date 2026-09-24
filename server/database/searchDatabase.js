@@ -128,7 +128,7 @@ export function saveSearchAndBusinesses({
 }
 
 
-// 🔎 Procura uma pesquisa recente igual
+//  Procura uma pesquisa recente igual
 export function getCachedSearch({
   country,
   city,
