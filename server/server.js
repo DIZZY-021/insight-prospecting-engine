@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import './database/initDatabase.js';
 
 import searchRoutes from './routes/searchRoutes.js';
 import dashboardRoutes from './routes/dashboardRoutes.js';
